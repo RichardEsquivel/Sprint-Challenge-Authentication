@@ -53,9 +53,18 @@ describe('Test login endpoint to see if we get a 401 response for not having val
 			.then(response => {
 				expect(response.status).toEqual(401)
 			})
+
+
+	})
+	it('should return a 400 if we try and access api/jokes without credentials and sending empty object', () => {
+		return supertests(server)
+			.post('/api/jokes')
+			.send({})
+			.then(response => {
+				expect(response.status).toEqual(400)
+			})
+
 	})
 
 })
-
-
 
