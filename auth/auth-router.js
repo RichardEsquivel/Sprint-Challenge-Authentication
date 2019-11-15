@@ -62,12 +62,11 @@ router.post("/login", (req, res) => {
 
 function getJwtToken(user) {
 	const payload = {
-		username: user.username,
-		password: user.password
+		username: user.username
 		//this will come from the database
 	};
 
-	const secret = process.env.JWT_SECRET || "Dead men inside the binary as we utilize the earth's energy to explode ourselves into the future 32876";
+	const secret = process.env.JWT_SECRET || 'Dead men inside the binary as we utilize the earths energy to explode ourselves into the future 32876';
 
 	const options = {
 		expiresIn: "1d"
