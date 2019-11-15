@@ -38,14 +38,14 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] What is the purpose of using _sessions_?
-
-- [ ] What does bcrypt do to help us store passwords in a secure manner.
-
-- [ ] What does bcrypt do to slow down attackers?
-
-- [ ] What are the three parts of the JSON Web Token?
-
+- [x ] What is the purpose of using _sessions_?
+	Sessions allow a user to send requests to a server once authenticated and not have to re-enter credentials on every requested to a authentication needed resource. The server will have a unique session located on the server to indicate 
+- [x ] What does bcrypt do to help us store passwords in a secure manner.
+bcrypt allows us to store passwords in a encrypted hashed format in a database located on the server side in a client-server relationship. The has itself is stored and an incoming password once hashed is compared to the stored hash to determine if they match.
+- [x ] What does bcrypt do to slow down attackers?
+Even if the attacker were to gain access to the database if the passwords were hashed they would also need to know the algorithm used and how many rounds were used to generate said has in order to extrapolate the password out of that context. Thereby increasing security even if access has been gained at another level.
+- [ x] What are the three parts of the JSON Web Token?
+The header which includes the Algorithm and the Token Type the payload or data passed in which typically includes a username and password and whatever options are passed in and the signature which utilizes a secret stored in the server environment as a protected environment variable to cryptographically sign your JSON Web Token with a 256-bit signature.
 ## Minimum Viable Product
 
 Implement an User Authentication System. Hash user's passwords before saving them to the database. Use `JSON Web Tokens` or `Sessions and Cookies` to persist authentication across requests.
