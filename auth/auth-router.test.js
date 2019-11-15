@@ -1,4 +1,4 @@
-const supertest = require('supertest')
+const supertests = require('supertest')
 const authRouter = require('../auth/auth-router.js');
 const db = require('../database/dbConfig.js');
 const server = require('../api/server.js');
@@ -11,12 +11,10 @@ test('the current environment should be testing', () => {
 	expect(process.env.DB_ENV).toBe('testing')
 });
 
-
+//this tests the register endpoint using the validateUser function used to confirm that user is passing in all needed info
 describe('Auth-router test that validates user', () => {
 	describe('validateUser()', () => {
-		beforeEach(async () => {
-			await db('users').truncate();
-		});
+
 
 		it('should fail if misssing password', () => {
 			const invalidUser = {};
@@ -38,3 +36,26 @@ describe('Auth-router test that validates user', () => {
 
 	})
 })
+
+describe('Test login endpoint to see if we get a 401 response for not having valid password or username and that we get an success message 200 when login is correct and get the Welcome have a token message', () => {
+	it('should fail if missing password and username', () => {
+		return supertests(server)
+			.post('/api/auth/login')
+			.send({ username: '', password: '' })
+			.then(response => {
+				expect(response.status).toEqual(401)
+			})
+	})
+	it('should fail if username and passwords are objects', () => {
+		return supertests(server)
+			.post('/api/auth/login')
+			.send({ username: {}, password: {} })
+			.then(response => {
+				expect(response.status).toEqual(401)
+			})
+	})
+
+})
+
+
+

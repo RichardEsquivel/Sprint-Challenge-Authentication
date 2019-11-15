@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
 
 //we will export this  function to confirm that the user has not altered the token and has a verified token 
